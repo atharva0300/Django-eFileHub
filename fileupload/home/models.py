@@ -19,7 +19,7 @@ class Folder(models.Model) :
     # creating a dynamic function 
 def get_upload_path(instance , filename ) :
     # we are created a random, where all the files will be stored and zipped
-    return os.path.join(str(instance.folder.uuid , filename))
+    return os.path.join(str(instance.folder.uid) , filename)
 
 class Files(models.Model) :
     folder = models.ForeignKey(Folder , on_delete = models.CASCADE)

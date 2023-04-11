@@ -26,6 +26,8 @@ from home.views import *
 
 
 urlpatterns = [
+    path('' , home),    
+    path('download/<uid>/' , download),
     path('admin/', admin.site.urls),
 
     # creating an endpoint for the HandleFileUpload view
