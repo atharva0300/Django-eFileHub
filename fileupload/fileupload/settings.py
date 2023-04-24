@@ -42,9 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # adding the app
-    'home.apps.HomeConfig',
-
-    'drf_yasg',
+    'home.apps.HomeConfig'
 ]
 
 MIDDLEWARE = [
