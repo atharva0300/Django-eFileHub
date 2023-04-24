@@ -1,4 +1,4 @@
-myenv/
+myenv
 fileupload/fileupload/__pycache__/
 fileupload/home/__pycache__/
 fileupload/db.sqlite3
