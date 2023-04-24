@@ -20,10 +20,24 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
 from home.views import *
+from rest_framework import permissions
 
+schema_view = get_schema_view(
+   openapi.Info(
+      title="File converter api",
+      default_version='v1',
+      description="Api for fileupload app",
+      terms_of_service="https://www.google.com/policies/terms/",
+      contact=openapi.Contact(email="atharva0300@gmail.com"),
+      license=openapi.License(name="BSD License"),
+   ),
+   public=True,
+   permission_classes=[permissions.AllowAny],
+)
 
 urlpatterns = [
     path('' , home),    
@@ -31,7 +45,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # creating an endpoint for the HandleFileUpload view
-    path('handle/' , HandleFileUpload.as_view())
+    path('handle/' , HandleFileUpload.as_view()),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
 
 
